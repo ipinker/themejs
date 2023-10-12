@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "importHelpers": true,
+        "allowSyntheticDefaultImports": true,
+        "useDefineForClassFields": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "types": [
+            "vite/client",
+        ]
+    },
+    "include": [
+        "**.d.ts",
+        "./**.ts",
+        "./**/*.ts",
+        "./**/*.d.ts",
+        "./**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

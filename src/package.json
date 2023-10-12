@@ -1,0 +1,38 @@
+{
+  "name": "ipink-theme",
+  "version": "0.0.1",
+  "description": "UI-theme",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        },
+        "./es": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs"
+        },
+        "./lib": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js"
+        },
+        "./*": "./*"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/colors": "^7.0.0",
+    "@ctrl/tinycolor": "^4.0.2",
+    "pinia": "^2.1.6"
+  }
+}
