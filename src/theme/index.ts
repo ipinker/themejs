@@ -26,17 +26,33 @@ export type ThemeStateType = {
 
 export type ThemeType = MapToken | null;
 
-export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
-    const { themeList = [] } = options || {};
-    const mapTokenList: MapToken[] = [];
-    console.log(app)
-    if(!themeList.length){
-        const defaultTheme = defaultDerivative(seedColors);
-        const darkTheme = darkDerivative(seedColors);
-        mapTokenList.push(defaultTheme);
-        mapTokenList.push(darkTheme);
+export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
+	const { themeList = [], useDark } = options || {};
+	const mapTokenList: MapToken[] = [];
+	console.log(themeList)
+	if(!themeList || !themeList.length){
+	    const defaultTheme = defaultDerivative(seedColors);
+	    const darkTheme = darkDerivative(seedColors);
+	    mapTokenList.push(defaultTheme);
+	    mapTokenList.push(darkTheme);
+	}
+	else {
+		for (let i = 0; i < themeList.length; i ++) {
+			const item: SeedMap = themeList[i];
+			const id: string = item.id || `${i}`;
+			item.id = useDark ? id + "-light" : id;
+			mapTokenList.push(defaultDerivative(item));
+			if(useDark){
+				const darkId = id + "-dark";
+				mapTokenList.push(darkDerivative({... item, id: darkId}));
+			}
+		}
+	}
+	return mapTokenList;
+}
 
-    }
+export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
+    const mapTokenList: MapToken[] = createThemeList(options);
     const useStore = defineStore("theme", {
         state: (): ThemeStateType => {
             return {
@@ -62,22 +78,31 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
             },
             // 插入主题
             insert(theme: SeedMap): ThemeType {
-                console.log(theme)
+				const themeList = createThemeList({
+					...options,
+					themeList: [theme]
+				})
+				this.themeList = this.themeList.concat(themeList);
+                console.log(this.themeList)
                 // todo ...
                 return null;
             },
             // 删除主题
             delete(id: string): number {
+				// 只有一个主题, 禁止删除, 防止主题取不到引发应用崩溃
+				if(this.themeList.length < 1) return -1;
                 const themeIndex = this.themeList.findIndex((theme: MapToken) => theme.id === id);
                 if(themeIndex === -1) return -1;
                 this.themeList.splice(themeIndex, 1);
                 return themeIndex;
             },
             // 更新主题
-            update(id: string, theme?: SeedMap): number {
+            update(id: string, theme: SeedMap): number {
+				if (!theme) return -1;
                 const themeIndex = this.themeList.findIndex((theme: MapToken) => theme.id === id);
                 if (themeIndex === -1) return -1;
-                console.log(theme)
+				this.themeList.splice(themeIndex, 1, { ...this.themeList[themeIndex], ...theme});
+                console.log(this.themeList[themeIndex])
                 // todo ...
                 return themeIndex;
             },

@@ -1,7 +1,6 @@
 import {generate} from '@ant-design/colors';
 import type {
     ColorPalettes,
-    LegacyColorPalettes,
     PresetColorType,
     SeedMap,
     MapToken
@@ -18,17 +17,16 @@ export default function derivative(token: SeedMap, mapToken?: MapToken): MapToke
         (colorKey: keyof PresetColorType) => {
             const colors = generate(token[colorKey], { theme: 'dark' });
             return new Array(10).fill(1).reduce((pre, _, i) => {
-                pre[`${colorKey}-${i + 1}`] = colors[i];
                 pre[`${colorKey}${i + 1}`] = colors[i];
                 return pre;
             }, {}) as ColorPalettes;
         }
     ).reduce((pre, cur) => {
         return { ...pre, ...cur };
-    }, {} as ColorPalettes & LegacyColorPalettes);
+    }, {} as ColorPalettes);
 
     const mergedMapToken = mapToken ?? defaultAlgorithm(token);
-    mergedMapToken.id = "dark";
+    mergedMapToken.id =  mergedMapToken.id || "dark";
     return {
         ...mergedMapToken,
         ...colorPresets,

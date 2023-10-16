@@ -1,4 +1,4 @@
-import {ColorMap, ColorPalettes, LegacyColorPalettes} from "./colors";
+import {ColorMap, ColorPalettes} from "./colors";
 import {SizeMap} from "./size";
 import {StyleMap} from "./style";
 import {SeedMap} from "./seed";
@@ -12,7 +12,7 @@ export * from "./seed";
 
 
 export interface MapToken extends
-    SeedMap, LegacyColorPalettes, ColorPalettes, ColorMap,
+    SeedMap, ColorPalettes, ColorMap,
     SizeMap,
     StyleMap,
     FontMap
