@@ -1,38 +1,56 @@
 {
-  "name": "ipink-theme",
-  "version": "0.0.1",
-  "description": "UI-theme",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.js"
-        },
-        "./es": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.mjs"
-        },
-        "./lib": {
-            "types": "./dist/index.d.ts",
-            "require": "./dist/index.js"
-        },
-        "./*": "./*"
-  },
-  "files": [
-    "dist",
-    "package.json",
-    "README.md"
-  ],
-  "scripts": {
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@ant-design/colors": "^7.0.0",
-    "@ctrl/tinycolor": "^4.0.2",
-    "pinia": "^2.1.6"
-  }
+	"name": "ipink-theme",
+	"version": "0.0.8",
+	"description": "Theme for ui, 根据自定义的颜色值导出一套常用的Map合集, 字号、圆角、边框、字色、背景色、...",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		},
+		"./es": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs"
+		},
+		"./lib": {
+			"types": "./dist/index.d.ts",
+			"require": "./dist/index.js"
+		},
+		"./*": "./*"
+	},
+    "keywords": [
+        "ui",
+        "theme",
+        "design",
+        "frontend",
+        "uniapp",
+        "vue3",
+        "color",
+        "主题",
+        "色彩",
+        "颜色",
+        "设计"
+    ],
+	"files": [
+		"dist",
+		"package.json",
+		"README.md",
+        "README.en.md"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ipinker/themejs.git"
+	},
+	"scripts": {
+		"build": "tsc && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@ant-design/colors": "^7.0.0",
+		"@ctrl/tinycolor": "^4.0.2",
+		"pinia": "^2.1.6"
+	}
 }

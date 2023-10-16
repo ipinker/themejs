@@ -6,7 +6,7 @@ export default defineConfig({
     base: "./",
     root: "./",
     build: {
-        sourcemap: true,
+        // sourcemap: true,
         //打包后文件目录
         outDir: "dist",
         reportCompressedSize: true,
