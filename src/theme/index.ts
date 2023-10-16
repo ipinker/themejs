@@ -12,7 +12,11 @@ export type ThemeOptions = {
 	// true : 每种主题都会生成对应的暗黑主题
 	// id生成: blue => blue-light, blue-dark
 	// 如果未传入id, id则使用 `${index}-light`,`${index}-dark`
-    useDark?: boolean
+    useDark?: boolean,
+	// 平台
+	platform?: string,
+	// 生成的尺寸是否拼接单位
+	useUnit?: boolean
 }
 
 export type ThemeStateType = {

@@ -25,8 +25,6 @@ export interface SizeMap {
    * @default 20
    */
   sizeMD: number;
-  /** Same as size by default, but could be larger in compact mode */
-  sizeMS: number;
   /**
    * @nameZH 默认
    * @desc 默认尺寸

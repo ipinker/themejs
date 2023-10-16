@@ -64,6 +64,24 @@
 	})
 ```
 
+## 尺寸型号
+```javascript
+	/**
+	 * 关于尺寸型号的说明
+	 *    小  <-----正------>  大
+	 *    XXS XS SM _ MD LG XL XXL
+	 * */
+```
+
+## 平台 px/rpx/rem 适配方案 (待做)
+* 1. 需要自行做兼容, 后续会在 <ThemeOptions> 类型添加 platform: String
+* 2. platform : 支持 UNI: rpx, 自动将原单位*2, WEB: px
+* 3. useUnit  : 自动补齐单位
+* 4. 针对 WEB-rem , 建议自行写个全局函数处理
+
+## 关于使用js代替scss主题换肤
+* ... 不知道咋说
+
 ## 类型 <SeedMap>
 ```javascript
 // 内置辅助色
@@ -100,7 +118,7 @@ export const seedColors: SeedMap = {
   colorBgBase: '',         // 基础背景色
   colorShadowBase: '',     // 基础阴影
 
-
+  // ------------- 以下选项用不到可以忽略 -----------------
   // Font
   fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
