@@ -7,6 +7,11 @@ import {seedColors} from "./themes/colorMap";
 export type ThemeOptions = {
     themeList?: SeedMap[],
     id?: string,
+	// 是否生成对应的暗黑主题, 
+	// false: 则只生成亮色主题
+	// true : 每种主题都会生成对应的暗黑主题
+	// id生成: blue => blue-light, blue-dark
+	// 如果未传入id, id则使用 `${index}-light`,`${index}-dark`
     useDark?: boolean
 }
 
