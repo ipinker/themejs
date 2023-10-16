@@ -1,6 +1,6 @@
 {
 	"name": "ipink-theme",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "Theme for ui, 根据自定义的颜色值导出一套常用的Map合集, 字号、圆角、边框、字色、背景色、...",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -28,12 +28,17 @@
         "frontend",
         "uniapp",
         "vue3",
-        "color"
+        "color",
+        "主题",
+        "色彩",
+        "颜色",
+        "设计"
     ],
 	"files": [
 		"dist",
 		"package.json",
-		"README.md"
+		"README.md",
+        "README.en.md"
 	],
 	"repository": {
 		"type": "git",

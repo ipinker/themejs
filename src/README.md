@@ -1,5 +1,8 @@
+## 说明
+1. pinia + vue 使用[createThemeStore]创建一个状态(State)来管理主题; 
+2. 直接使用 [createThemeList]直接Create一个主题列表, 然后拿这个列表去做你想做的事. 
 
-## 使用 (UniApp + Pinia + Vue3)
+## 使用内置PiniaState (Use built-in states) (Pinia + Vue3)
 ```javascript
     // main.js 
     import { createSSRApp } from "vue";
@@ -39,7 +42,7 @@
     </script>
 ```
 
-## 普通使用 (仅生成主题)
+## 仅使用主题列表 (Use theme list)
 ```javascript
 	// 默认生成 黑,白 两种
 	import { createThemeList } from "ipink-theme"
@@ -65,7 +68,7 @@
 	})
 ```
 
-## 尺寸型号
+## 尺寸型号 (Size)
 ```javascript
 	/**
 	 * 关于尺寸型号的说明
@@ -80,10 +83,8 @@
 * 3. useUnit  : 自动补齐单位
 * 4. 针对 WEB-rem , 建议自行写个全局函数处理
 
-## 关于使用js代替scss主题换肤(Vuex, Pinia)
-* ... 
 
-## 类型 <SeedMap>
+## 类型 (Type) <SeedMap>
 ```javascript
 	// 内置辅助色
 	const defaultPresetColors : PresetColorType = {
