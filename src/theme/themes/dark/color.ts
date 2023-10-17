@@ -39,7 +39,7 @@ export const generateNeutralColorPalettes: GenerateNeutralColorMap = (
     return {
         colorBgBase,
         colorTextBase,
-        colorShadowBase: getAlphaColor(colorShadowBase, 0.04),
+        colorShadowBase: getAlphaColor(colorShadowBase, 0.12),
 
         colorText: getAlphaColor(colorTextBase, 0.85),
         colorTextSecondary: getAlphaColor(colorTextBase, 0.65),
