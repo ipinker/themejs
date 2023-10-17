@@ -7,7 +7,7 @@ import {seedColors} from "./themes/colorMap";
 export type ThemeOptions = {
     themeList?: SeedMap[],
     id?: string,
-	// 是否生成对应的暗黑主题, 
+	// 是否生成对应的暗黑主题,
 	// false: 则只生成亮色主题
 	// true : 每种主题都会生成对应的暗黑主题
 	// id生成: blue => blue-light, blue-dark
@@ -31,8 +31,8 @@ export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 	const mapTokenList: MapToken[] = [];
 	console.log(themeList)
 	if(!themeList || !themeList.length){
-	    const defaultTheme = defaultDerivative(seedColors);
-	    const darkTheme = darkDerivative(seedColors);
+	    const defaultTheme = defaultDerivative({... seedColors, id: "light"});
+	    const darkTheme = darkDerivative({... seedColors, id: "dark"});
 	    mapTokenList.push(defaultTheme);
 	    mapTokenList.push(darkTheme);
 	}

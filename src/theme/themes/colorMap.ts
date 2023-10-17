@@ -25,7 +25,7 @@ export const defaultPresetColors: PresetColorType = {
   purple: '#722ED1',
   cyan: '#13C2C2',
   green: '#52C41A',
-  pink: '#eb2f96',
+  pink: '#FC6572',
   red: '#F5222D',
   orange: '#FA8C16',
   yellow: '#FADB14',
