@@ -1,6 +1,6 @@
 {
 	"name": "ipink-theme",
-	"version": "0.0.17",
+	"version": "0.0.18",
 	"description": "Theme for ui, 根据自定义的颜色值导出一套常用的Map合集, 字号、圆角、边框、字色、背景色、...",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",

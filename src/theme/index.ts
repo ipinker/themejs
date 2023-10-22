@@ -25,7 +25,6 @@ export type ThemeStateType = {
 }
 
 export interface ThemeType extends MapToken {};
-export type ReturnThemeType = ThemeType | null;
 
 export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 	const { themeList = [], useDark } = options || {};
@@ -62,14 +61,14 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
             };
         },
         getters: {
-            theme: (state: ThemeStateType): ReturnThemeType => {
+            theme: (state: ThemeStateType): ThemeType | null => {
                 return state.themeList.find((theme: MapToken) => theme.id === state.id) || null;
             }
         },
         actions: {
             // 切换主题
-            change(id: string): ReturnThemeType {
-                const theme: ReturnThemeType = this.themeList.find((theme: MapToken) => theme.id === id) || null;
+            change(id: string): ThemeType | null {
+                const theme: ThemeType | null = this.themeList.find((theme: MapToken) => theme.id === id) || null;
                 if (!theme) {
                     console.error("The theme id is not exits!");
                     return null;
@@ -78,7 +77,7 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
                 return this.theme;
             },
             // 插入主题
-            insert(theme: SeedMap): ReturnThemeType {
+            insert(theme: SeedMap): ThemeType | null {
 				const themeList = createThemeList({
 					...options,
 					themeList: [theme]
@@ -106,7 +105,7 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
                 return themeIndex;
             },
             // 获取主题
-            get(id?: string): ReturnThemeType {
+            get(id?: string): ThemeType | null {
                 if (!id) return this.theme;
                 return this.themeList.find((theme: MapToken) => theme.id === id) || null;
             }
