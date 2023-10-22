@@ -38,7 +38,7 @@
 		"dist",
 		"package.json",
 		"README.md",
-        "README.en.md"
+        "LICENSE"
 	],
 	"repository": {
 		"type": "git",
@@ -52,5 +52,6 @@
 		"@ant-design/colors": "^7.0.0",
 		"@ctrl/tinycolor": "^4.0.2",
 		"pinia": "^2.1.6"
-	}
+	},
+    "license": "ISC"
 }
