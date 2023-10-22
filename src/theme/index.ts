@@ -24,7 +24,8 @@ export type ThemeStateType = {
     themeList: MapToken[]
 }
 
-export type ThemeType = MapToken | null;
+export interface ThemeType extends MapToken {};
+export type ReturnThemeType = ThemeType | null;
 
 export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 	const { themeList = [], useDark } = options || {};
@@ -61,14 +62,14 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
             };
         },
         getters: {
-            theme: (state: ThemeStateType): ThemeType => {
+            theme: (state: ThemeStateType): ReturnThemeType => {
                 return state.themeList.find((theme: MapToken) => theme.id === state.id) || null;
             }
         },
         actions: {
             // 切换主题
-            change(id: string): ThemeType {
-                const theme: ThemeType = this.themeList.find((theme: MapToken) => theme.id === id) || null;
+            change(id: string): ReturnThemeType {
+                const theme: ReturnThemeType = this.themeList.find((theme: MapToken) => theme.id === id) || null;
                 if (!theme) {
                     console.error("The theme id is not exits!");
                     return null;
@@ -77,13 +78,12 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
                 return this.theme;
             },
             // 插入主题
-            insert(theme: SeedMap): ThemeType {
+            insert(theme: SeedMap): ReturnThemeType {
 				const themeList = createThemeList({
 					...options,
 					themeList: [theme]
 				})
 				this.themeList = this.themeList.concat(themeList);
-                console.log(this.themeList)
                 // todo ...
                 return null;
             },
@@ -102,12 +102,11 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
                 const themeIndex = this.themeList.findIndex((theme: MapToken) => theme.id === id);
                 if (themeIndex === -1) return -1;
 				this.themeList.splice(themeIndex, 1, { ...this.themeList[themeIndex], ...theme});
-                console.log(this.themeList[themeIndex])
                 // todo ...
                 return themeIndex;
             },
             // 获取主题
-            get(id?: string): ThemeType {
+            get(id?: string): ReturnThemeType {
                 if (!id) return this.theme;
                 return this.themeList.find((theme: MapToken) => theme.id === id) || null;
             }
