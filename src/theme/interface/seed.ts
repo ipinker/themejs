@@ -52,6 +52,8 @@ export interface SeedMap extends PresetColorType {
    * @descEN Used to derive the base variable of the text color gradient. In v5, we added a layer of text color derivation algorithm to produce gradient variables of text color gradient. But please do not use this Seed Token directly in the code!
    */
   colorTextBase: string;
+  colorWhiteTextBase: string;
+
 
   /**
    * @nameZH 基础背景色

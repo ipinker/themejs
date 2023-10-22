@@ -20,6 +20,7 @@ export default function genColorMapToken(
         colorPrimary: colorPrimaryBase,
         colorBgBase,
         colorTextBase,
+        colorWhiteTextBase,
         colorShadowBase
     } = seed;
 
@@ -28,8 +29,8 @@ export default function genColorMapToken(
     const warningColors = generateColorPalettes(colorWarningBase);
     const errorColors = generateColorPalettes(colorErrorBase);
     const infoColors = generateColorPalettes(colorInfoBase);
-    const neutralColors = generateNeutralColorPalettes(colorBgBase, colorTextBase, colorShadowBase);
-
+    const neutralColors = generateNeutralColorPalettes(colorBgBase, colorTextBase, colorWhiteTextBase, colorShadowBase);
+    console.log("neutralColors : ", neutralColors, colorWhiteTextBase)
     // Color Link
     const colorLink = seed.colorLink || seed.colorInfo;
     const linkColors = generateColorPalettes(colorLink);
@@ -103,5 +104,6 @@ export default function genColorMapToken(
 
         colorBgMask: new TinyColor('#000').setAlpha(0.45).toRgbString(),
         colorWhite: '#fff',
+        colorBlack: '#000',
     };
 }

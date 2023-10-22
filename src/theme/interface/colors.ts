@@ -30,6 +30,7 @@ export interface ColorNeutralMap {
    * @internal
    */
   colorTextBase: string;
+  colorWhiteTextBase: string;
 
   /**
    * @internal
@@ -607,13 +608,6 @@ export interface ColorMap
     ColorErrorMap,
     ColorInfoMap,
     ColorLinkMap {
-  /**
-   * @nameZH 纯白色
-   * @desc 不随主题变化的纯白色
-   * @descEN Pure white color don't changed by theme
-   * @default #FFFFFF
-   */
-  colorWhite: string;
 
   /**
    * @nameZH 浮层的背景蒙层颜色
@@ -628,7 +622,14 @@ export interface ColorMap
    * @desc 不随主题变化的纯黑色
    * @default #0000
    */
-  // colorBlack: string;
+  colorBlack?: string;
+  /**
+   * @nameZH 纯白色
+   * @desc 不随主题变化的纯白色
+   * @descEN Pure white color don't changed by theme
+   * @default #FFFFFF
+   */
+  colorWhite?: string;
 }
 
 

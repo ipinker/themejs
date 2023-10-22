@@ -17,6 +17,7 @@ export type GenerateColorMap = (baseColor: string) => ColorMap;
 export type GenerateNeutralColorMap = (
   bgBaseColor: string,
   textBaseColor: string,
+  colorWhiteText: string,
   shadowBaseColor: string
 ) => ColorNeutralMap;
 
@@ -49,6 +50,7 @@ export const seedColors: SeedMap = {
   colorInfo: '#909399',
   colorLink: '',
   colorTextBase: '',
+  colorWhiteTextBase: '#fff',
   colorBgBase: '',
   colorShadowBase: '',
 
