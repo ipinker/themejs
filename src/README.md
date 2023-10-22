@@ -2,6 +2,9 @@
 1. pinia + vue 使用[createThemeStore]创建一个状态(State)来管理主题; 
 2. 直接使用 [createThemeList]直接Create一个主题列表, 然后拿这个列表去做你想做的事. 
 
+## 预览 (Preview)
+[`预览链接 (Preview address)`]:https://i.ipink.pink/app/#/pages/components/theme/colorful?title=component.theme.colorful&parentTitle=component.theme.name)
+
 ## 使用内置PiniaState (Use built-in states) (Pinia + Vue3)
 ```javascript
     // main.js 
@@ -102,7 +105,7 @@
 	  gold: '#FAAD14',   // 金
 	  lime: '#A0D911',   // 石墨
 	  gray: '#818181',   // 灰
-	} as const;
+	};
 
 	export const seedColors: SeedMap = {
 	  id: "light", // 主题id
