@@ -26,6 +26,12 @@ export const generateColorPalettes: GenerateColorMap = (baseColor: string) => {
         10: colors[4],
     };
 };
+export const darken = (color: string) : string => {
+    return new TinyColor(color).darken().toString()
+}
+export const lighten = (color: string) : string => {
+    return new TinyColor(color).lighten().toString()
+}
 
 export const generateNeutralColorPalettes: GenerateNeutralColorMap = (
     bgBaseColor: string,
@@ -33,10 +39,10 @@ export const generateNeutralColorPalettes: GenerateNeutralColorMap = (
     whiteTextBase: string,
     shadowBaseColor: string
 ) => {
-    const colorBgBase = bgBaseColor || '#000';
-    const colorTextBase = textBaseColor || '#fff';
-    const colorWhiteTextBase = whiteTextBase || '#000';
-    const colorShadowBase = shadowBaseColor || "#fff";
+    const colorBgBase = bgBaseColor  ? darken(bgBaseColor) : '#000';
+    const colorTextBase = textBaseColor  ? lighten(textBaseColor) : '#fff';
+    const colorWhiteTextBase = whiteTextBase  ? darken(whiteTextBase) : '#000';
+    const colorShadowBase = shadowBaseColor ? lighten(shadowBaseColor) : "#fff";
 
     return {
         colorBgBase,

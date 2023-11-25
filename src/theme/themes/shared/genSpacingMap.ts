@@ -4,7 +4,7 @@ export default function genSpacingMap(token: SeedMap): Pick<
     MapToken,
     "padding" | "paddingXS" | "paddingSM" | "paddingLG" | "margin" | "marginXS" | "marginSM" | "marginLG"
 > {
-    console.log(token)
+    // console.log(token)
     // const {  } = token;
 
     return {

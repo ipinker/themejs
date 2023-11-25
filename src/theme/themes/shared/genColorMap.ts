@@ -29,8 +29,9 @@ export default function genColorMapToken(
     const warningColors = generateColorPalettes(colorWarningBase);
     const errorColors = generateColorPalettes(colorErrorBase);
     const infoColors = generateColorPalettes(colorInfoBase);
-    const neutralColors = generateNeutralColorPalettes(colorBgBase, colorTextBase, colorWhiteTextBase, colorShadowBase);
-    console.log("neutralColors : ", neutralColors, colorWhiteTextBase)
+    const neutralColors = generateNeutralColorPalettes(
+        colorBgBase, colorTextBase, colorWhiteTextBase, colorShadowBase
+    );
     // Color Link
     const colorLink = seed.colorLink || seed.colorInfo;
     const linkColors = generateColorPalettes(colorLink);

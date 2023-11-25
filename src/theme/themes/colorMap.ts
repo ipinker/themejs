@@ -50,7 +50,7 @@ export const seedColors: SeedMap = {
   colorInfo: '#909399',
   colorLink: '',
   colorTextBase: '',
-  colorWhiteTextBase: '#fff',
+  colorWhiteTextBase: '',
   colorBgBase: '',
   colorShadowBase: '',
 
