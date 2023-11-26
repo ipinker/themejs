@@ -29,7 +29,6 @@ export interface ThemeType extends MapToken {};
 export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 	const { themeList = [], useDark } = options || {};
 	const mapTokenList: MapToken[] = [];
-	console.log(themeList)
 	if(!themeList || !themeList.length){
 	    const defaultTheme = defaultDerivative({... seedColors, id: "light"});
 	    const darkTheme = darkDerivative({... seedColors, id: "dark"});
@@ -41,10 +40,17 @@ export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 			const item: SeedMap = themeList[i];
 			const id: string = item.id || `${i}`;
 			item.id = useDark ? id + "-light" : id;
-			mapTokenList.push(defaultDerivative(item));
+			mapTokenList.push(defaultDerivative({
+                ... seedColors,
+                ... item
+            }));
 			if(useDark){
 				const darkId = id + "-dark";
-				mapTokenList.push(darkDerivative({... item, id: darkId}));
+				mapTokenList.push(darkDerivative({
+                    ... seedColors,
+                    ... item,
+                    id: darkId
+                }));
 			}
 		}
 	}
