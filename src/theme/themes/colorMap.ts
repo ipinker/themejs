@@ -48,7 +48,7 @@ export const seedColors: SeedMap = {
   colorWarning: '#faad14',
   colorError: '#ff4d4f',
   colorInfo: '#909399',
-  colorLink: '',
+  colorLink: '#1677ff',
   colorTextBase: '',
   colorWhiteTextBase: '',
   colorBgBase: '',
