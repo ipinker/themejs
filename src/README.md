@@ -37,6 +37,7 @@
 ```vue
     <script>
     // pages/index.vue
+    // 有点问题，后续有空会完善，推荐自己实现
     import {useThemeStore} from "@/store/theme";
     const useStore = useThemeStore();
     

@@ -3,9 +3,10 @@ import type {MapToken, SeedMap} from "./interface";
 import defaultDerivative from "./themes/default"
 import darkDerivative from "./themes/dark"
 import {seedColors} from "./themes/colorMap";
+import { SeedOption } from "../theme/interface/seed"
 
 export type ThemeOptions = {
-    themeList?: SeedMap[],
+    themeList?: SeedMap[] | SeedOption[],
     id?: string,
 	// 是否生成对应的暗黑主题,
 	// false: 则只生成亮色主题
@@ -21,7 +22,8 @@ export type ThemeOptions = {
 
 export type ThemeStateType = {
     id: string,
-    themeList: MapToken[]
+    themeList: MapToken[],
+    modeId?: "dark" | "light"
 }
 
 export interface ThemeType extends MapToken {};
@@ -37,7 +39,7 @@ export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 	}
 	else {
 		for (let i = 0; i < themeList.length; i ++) {
-			const item: SeedMap = themeList[i];
+			const item: SeedMap = themeList[i] as SeedMap;
 			const id: string = item.id || `${i}`;
 			item.id = useDark ? id + "-light" : id;
 			mapTokenList.push(defaultDerivative({

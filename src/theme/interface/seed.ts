@@ -153,3 +153,40 @@ export interface SeedMap extends PresetColorType {
    */
   zIndexPopupBase: number;
 }
+
+export interface SeedOption {
+    id: string;
+    colorPrimary: string;
+    colorSuccess?: string;
+    colorWarning?: string;
+    colorError?: string;
+    colorInfo?: string;
+    colorTextBase?: string;
+    colorWhiteTextBase?: string;
+    colorBgBase?: string;
+    colorShadowBase?: string;
+    colorLink?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    borderRadius?: number;
+    sizeUnit?: number;
+    sizeStep?: number;
+    sizePopupArrow?: number;
+    zIndexBase?: number;
+    zIndexPopupBase?: number;
+
+    blue?: string;
+    purple?: string;
+    cyan?: string;
+    green?: string;
+    pink?: string;
+    red?: string;
+    orange?: string;
+    yellow?: string;
+    volcano?: string;
+    geekblue?: string;
+    lime?: string;
+    gold?: string;
+    gray?: string;
+    gossamer?: string;
+}
