@@ -11,7 +11,7 @@ export * from "./font";
 export * from "./seed";
 
 
-export interface MapToken extends
+export interface ColorToken extends
     SeedMap, ColorPalettes, ColorMap,
     SizeMap,
     StyleMap,

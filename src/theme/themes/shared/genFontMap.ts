@@ -1,7 +1,7 @@
 import type { FontMap } from '../../interface';
 import genFontSizes from './genFontSizes';
 
-const genFontMapToken = (fontSize: number): FontMap => {
+const genFontColorToken = (fontSize: number): FontMap => {
   const fontSizePairs = genFontSizes(fontSize);
   const fontSizes = fontSizePairs.map((pair) => pair.size);
   const lineHeights = fontSizePairs.map((pair) => pair.lineHeight);
@@ -30,4 +30,4 @@ const genFontMapToken = (fontSize: number): FontMap => {
   };
 };
 
-export default genFontMapToken;
+export default genFontColorToken;

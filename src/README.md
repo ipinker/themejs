@@ -62,7 +62,7 @@
 			// SeedColors成员 参考下方 #类型 <SeedMap>
 		}
 	]
-	const themeList: MapToken[] = createThemeList({
+	const themeList: ColorToken[] = createThemeList({
 		themeList,
 		// 是否生成对应的暗黑主题, 
 		// false: 则只生成亮色主题

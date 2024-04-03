@@ -8,7 +8,7 @@ interface PaletteGenerators {
     generateNeutralColorPalettes: GenerateNeutralColorMap;
 }
 
-export default function genColorMapToken(
+export default function genColorColorToken(
     seed: SeedMap,
     {generateColorPalettes, generateNeutralColorPalettes}: PaletteGenerators,
 ): ColorMap {

@@ -1,9 +1,9 @@
-import type {MapToken} from '../../interface';
+import type {ColorToken} from '../../interface';
 
 const genRadiusMap = (
     radiusBase: number,
 ): Pick<
-    MapToken,
+    ColorToken,
     'borderRadiusXS' | 'borderRadiusSM' | 'borderRadiusLG' | 'borderRadius'
 > => {
     let radiusLG = radiusBase;

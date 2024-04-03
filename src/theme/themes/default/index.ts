@@ -3,10 +3,10 @@ import type {
     ColorPalettes,
     PresetColorType,
     SeedMap,
-    MapToken
+    ColorToken
 } from '../../interface';
 import {defaultPresetColors} from '../colorMap';
-import genColorMapToken from '../shared/genColorMap';
+import genColorColorToken from '../shared/genColorMap';
 import {generateColorPalettes, generateNeutralColorPalettes} from './color';
 import genSizeMap from "../shared/genSizeMap";
 import genRadiusMap from "../shared/genRadiusMap";
@@ -15,7 +15,7 @@ import genOuterMap from "../shared/genOuterMap";
 import genSpacingMap from "../shared/genSpacingMap";
 
 
-export default function derivative(token: SeedMap): MapToken {
+export default function derivative(token: SeedMap): ColorToken {
 
     const colorPresets = Object.keys(defaultPresetColors).map(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -36,7 +36,7 @@ export default function derivative(token: SeedMap): MapToken {
         ...token,
         ...colorPresets,
         // Colors
-        ...genColorMapToken(token, {
+        ...genColorColorToken(token, {
             generateColorPalettes,
             generateNeutralColorPalettes,
         }),
@@ -48,5 +48,5 @@ export default function derivative(token: SeedMap): MapToken {
         ...genRadiusMap(token.borderRadius),
         ...genOuterMap(token),
         ...genSpacingMap(token)
-    } as MapToken;
+    } as ColorToken;
 }

@@ -1,13 +1,12 @@
 import { defineStore } from "pinia";
-import type {MapToken, SeedMap} from "./interface";
+import type {ColorToken, SeedMap} from "./interface";
 import defaultDerivative from "./themes/default"
 import darkDerivative from "./themes/dark"
 import {seedColors} from "./themes/colorMap";
 import { SeedOption } from "../theme/interface/seed"
 
 export type ThemeOptions = {
-    themeList?: SeedMap[] | SeedOption[],
-    id?: string,
+    themeList?: SeedOption[] | SeedMap[],
 	// 是否生成对应的暗黑主题,
 	// false: 则只生成亮色主题
 	// true : 每种主题都会生成对应的暗黑主题
@@ -22,15 +21,14 @@ export type ThemeOptions = {
 
 export type ThemeStateType = {
     id: string,
-    themeList: MapToken[],
+    themeList: ColorToken[],
     modeId?: "dark" | "light"
 }
 
-export interface ThemeType extends MapToken {};
 
-export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
+export const createThemeList = (options ?: ThemeOptions): ColorToken[] => {
 	const { themeList = [], useDark } = options || {};
-	const mapTokenList: MapToken[] = [];
+	const mapTokenList: ColorToken[] = [];
 	if(!themeList || !themeList.length){
 	    const defaultTheme = defaultDerivative({... seedColors, id: "light"});
 	    const darkTheme = darkDerivative({... seedColors, id: "dark"});
@@ -59,8 +57,14 @@ export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
 	return mapTokenList;
 }
 
+/**
+ * @desc 创建一个Pinia for theme; 正在维护， 暂停使用
+ * @param app { Vue }
+ * @param options { ThemeOptions }
+ * @return: 
+ */
 export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
-    const mapTokenList: MapToken[] = createThemeList(options);
+    const mapTokenList: ColorToken[] = createThemeList(options);
     const useStore = defineStore("theme", {
         state: (): ThemeStateType => {
             return {
@@ -69,14 +73,14 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
             };
         },
         getters: {
-            theme: (state: ThemeStateType): ThemeType | null => {
-                return state.themeList.find((theme: MapToken) => theme.id === state.id) || null;
+            theme: (state: ThemeStateType): ColorToken | null => {
+                return state.themeList.find((theme: ColorToken) => theme.id === state.id) || null;
             }
         },
         actions: {
             // 切换主题
-            change(id: string): ThemeType | null {
-                const theme: ThemeType | null = this.themeList.find((theme: MapToken) => theme.id === id) || null;
+            change(id: string): ColorToken | null {
+                const theme: ColorToken | null = this.themeList.find((theme: ColorToken) => theme.id === id) || null;
                 if (!theme) {
                     console.error("The theme id is not exits!");
                     return null;
@@ -85,7 +89,7 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
                 return this.theme;
             },
             // 插入主题
-            insert(theme: SeedMap): ThemeType | null {
+            insert(theme: SeedMap): ColorToken | null {
 				const themeList = createThemeList({
 					...options,
 					themeList: [theme]
@@ -98,7 +102,7 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
             delete(id: string): number {
 				// 只有一个主题, 禁止删除, 防止主题取不到引发应用崩溃
 				if(this.themeList.length < 1) return -1;
-                const themeIndex = this.themeList.findIndex((theme: MapToken) => theme.id === id);
+                const themeIndex = this.themeList.findIndex((theme: ColorToken) => theme.id === id);
                 if(themeIndex === -1) return -1;
                 this.themeList.splice(themeIndex, 1);
                 return themeIndex;
@@ -106,16 +110,16 @@ export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
             // 更新主题
             update(id: string, theme: SeedMap): number {
 				if (!theme) return -1;
-                const themeIndex = this.themeList.findIndex((theme: MapToken) => theme.id === id);
+                const themeIndex = this.themeList.findIndex((theme: ColorToken) => theme.id === id);
                 if (themeIndex === -1) return -1;
 				this.themeList.splice(themeIndex, 1, { ...this.themeList[themeIndex], ...theme});
                 // todo ...
                 return themeIndex;
             },
             // 获取主题
-            get(id?: string): ThemeType | null {
+            get(id?: string): ColorToken | null {
                 if (!id) return this.theme;
-                return this.themeList.find((theme: MapToken) => theme.id === id) || null;
+                return this.themeList.find((theme: ColorToken) => theme.id === id) || null;
             }
         }
     })

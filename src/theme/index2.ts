@@ -1,4 +1,4 @@
-import type {MapToken, SeedMap, SeedOption} from "./interface";
+import type {ColorToken, SeedMap, SeedOption} from "./interface";
 import defaultDerivative from "./themes/default"
 import darkDerivative from "./themes/dark"
 import {seedColors} from "./themes/colorMap";
@@ -19,9 +19,9 @@ export type ThemeOptions = {
 }
 
 
-export const createThemeList = (options ?: ThemeOptions): MapToken[] => {
+export const createThemeList = (options ?: ThemeOptions): ColorToken[] => {
 	const { themeList = [], useDark } = options || {};
-	const mapTokenList: MapToken[] = [];
+	const mapTokenList: ColorToken[] = [];
 	if(!themeList || !themeList.length){
 	    const defaultTheme = defaultDerivative({... seedColors, id: "light"});
 	    const darkTheme = darkDerivative({... seedColors, id: "dark"});

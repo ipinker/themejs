@@ -1,11 +1,10 @@
 import getAlphaColor from "../src/theme/util/getAlphaColor";
-import { MapToken } from "../src/theme/interface";
 
 export const genAlphaColor = getAlphaColor;
  // getAlphaColor;
 export { createThemeList } from "../src/theme/index2"
 
-export type { ThemeOptions, ThemeType } from "../src/theme/index"
+export type { ThemeOptions } from "../src/theme/index"
 
 export type {
     SizeMap,
@@ -15,8 +14,8 @@ export type {
     FontMap,
     PresetColorKey,
     PresetColorType,
-    ColorPalettes
+    ColorPalettes,
+    ColorToken
 } from "../src/theme/interface";
-export type ColorToken = MapToken;
 
 

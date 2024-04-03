@@ -3,14 +3,14 @@ import type {
     ColorPalettes,
     PresetColorType,
     SeedMap,
-    MapToken
+    ColorToken
 } from '../../interface';
 import {defaultPresetColors} from '../colorMap';
-import genColorMapToken from '../shared/genColorMap';
+import genColorColorToken from '../shared/genColorMap';
 import {generateColorPalettes, generateNeutralColorPalettes} from './color';
 import defaultAlgorithm from '../default';
 
-export default function derivative(token: SeedMap, mapToken?: MapToken): MapToken {
+export default function derivative(token: SeedMap, mapToken?: ColorToken): ColorToken {
     const colorPresets = Object.keys(defaultPresetColors).map(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -25,15 +25,15 @@ export default function derivative(token: SeedMap, mapToken?: MapToken): MapToke
         return { ...pre, ...cur };
     }, {} as ColorPalettes);
 
-    const mergedMapToken = mapToken ?? defaultAlgorithm(token);
-    mergedMapToken.id =  mergedMapToken.id || "dark";
+    const mergedColorToken = mapToken ?? defaultAlgorithm(token);
+    mergedColorToken.id =  mergedColorToken.id || "dark";
     return {
-        ...mergedMapToken,
+        ...mergedColorToken,
         ...colorPresets,
         // Colors
-        ...genColorMapToken(token, {
+        ...genColorColorToken(token, {
             generateColorPalettes,
             generateNeutralColorPalettes,
         })
-    } as MapToken;
+    } as ColorToken;
 }

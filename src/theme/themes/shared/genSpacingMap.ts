@@ -1,7 +1,7 @@
-import type {MapToken, SeedMap} from '../../interface';
+import type {ColorToken, SeedMap} from '../../interface';
 
 export default function genSpacingMap(token: SeedMap): Pick<
-    MapToken,
+    ColorToken,
     "padding" | "paddingXS" | "paddingSM" | "paddingLG" | "margin" | "marginXS" | "marginSM" | "marginLG"
 > {
     // console.log(token)

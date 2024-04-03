@@ -1,7 +1,7 @@
-import type {MapToken, SeedMap} from '../../interface';
+import type {ColorToken, SeedMap} from '../../interface';
 
 export default function genOuterMap(token?: SeedMap): Pick<
-    MapToken,
+    ColorToken,
     "borderWidth" | "borderWidthXS" | "borderWidthSM" | "borderWidthLG" | "boxShadowWidth" | "boxShadowWidthXS" | "boxShadowWidthSM" | "boxShadowWidthLG"
 >  {
     // const {  } = token;
