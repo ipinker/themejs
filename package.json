@@ -1,6 +1,6 @@
 {
   "name": "colorui-theme",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
     "terser": "^5.21.0",
