@@ -19,7 +19,7 @@
             "dom"
         ],
         "types": [
-            "vite/client",
+            "vite/client"
         ]
     },
     "include": [

@@ -1,8 +1,7 @@
 import getAlphaColor from "./theme/util/getAlphaColor";
 
 export const genAlphaColor = getAlphaColor;
- // getAlphaColor;
-export { createThemeStore, createThemeList } from "./theme/index"
+export * from "./theme/index"
 
 export type { ThemeOptions } from "./theme/index"
 

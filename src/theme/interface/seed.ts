@@ -3,6 +3,7 @@ import type { PresetColorType } from './colors';
 
 export interface SeedMap extends PresetColorType {
   id: string,
+  label?: string;
   //  ----------   Color   ---------- //
 
   /**
@@ -156,6 +157,7 @@ export interface SeedMap extends PresetColorType {
 
 export interface SeedOption {
     id: string;
+	label?: string;
     colorPrimary: string;
     colorSuccess?: string;
     colorWarning?: string;

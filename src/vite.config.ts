@@ -1,7 +1,7 @@
 import dts from "vite-plugin-dts";
 import DefineOptions from "unplugin-vue-define-options/vite";
 import {defineConfig} from "vite";
-
+import requireTransform from 'vite-plugin-require-transform';
 export default defineConfig({
     base: "./",
     root: "./",
@@ -23,7 +23,7 @@ export default defineConfig({
         },
         rollupOptions: {
             //忽略打包vue文件
-            external: ["@ant-design/colors", "@ctrl/tinycolor", "pinia"],
+            external: ["@ant-design/colors", "@ctrl/tinycolor", "theme.ts"],
             input: ["./index.ts"],
             output: [
                 {
@@ -59,6 +59,7 @@ export default defineConfig({
     },
     plugins: [
         dts({
+			exclude: ["theme.ts"],
             entryRoot: "./",
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsconfigPath: "../tsconfig.json",

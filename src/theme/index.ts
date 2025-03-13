@@ -25,6 +25,32 @@ export type ThemeStateType = {
     modeId?: "dark" | "light"
 }
 
+abstract class Config {
+	static modeId: "dark" | "light"
+	static themeId: string
+	static themeList: SeedOption[]
+	static setConfig: (options: { themeList: SeedOption[], modeId?: "dark" | "light", themeId?: string }) => void
+}
+export class ThemeConfig extends Config {
+	static modeId: "dark" | "light" = "light"
+	static themeId: string = ""
+	static themeList: SeedOption[] = [
+		{"colorPrimary": "#16AD90", id: "blue", label: "经典蓝"},
+		{"colorPrimary": "#FC6572", id: "pink", label: "可爱粉"},
+		{"colorPrimary": "#ff4d4f", id: "red", label: "薄暮红"},
+		{"colorPrimary": "#fa541c", id: "volcano", label: "火山棕"},
+		{"colorPrimary": "#fa8c16", id: "orange", label: "日暮橙"},
+		{"colorPrimary": "#73d13d", id: "gossamer", label: "极光绿"},
+		{"colorPrimary": "#069b81", id: "green", label: "游丝蓝"},
+		{"colorPrimary": "#2f54eb", id: "geekblue", label: "极客蓝"},
+	]
+	static setConfig(options: { themeList: SeedOption[], modeId?: "dark" | "light", themeId?: string }) {
+		Object.keys(options).forEach((key) => {
+			// @ts-ignore
+			ThemeConfig[key ] = options[key]
+		})
+	}
+}
 
 export const createThemeList = (options ?: ThemeOptions): ColorToken[] => {
 	const { themeList = [], useDark } = options || {};
@@ -56,75 +82,4 @@ export const createThemeList = (options ?: ThemeOptions): ColorToken[] => {
 	}
 	return mapTokenList;
 }
-
-/**
- * @desc 创建一个Pinia for theme; 正在维护， 暂停使用
- * @param app { Vue }
- * @param options { ThemeOptions }
- * @return: 
- */
-export const createThemeStore = (app?: any, options ?: ThemeOptions) => {
-    const mapTokenList: ColorToken[] = createThemeList(options);
-    const useStore = defineStore("theme", {
-        state: (): ThemeStateType => {
-            return {
-                id: "light",
-                themeList: mapTokenList
-            };
-        },
-        getters: {
-            theme: (state: ThemeStateType): ColorToken | null => {
-                return state.themeList.find((theme: ColorToken) => theme.id === state.id) || null;
-            }
-        },
-        actions: {
-            // 切换主题
-            change(id: string): ColorToken | null {
-                const theme: ColorToken | null = this.themeList.find((theme: ColorToken) => theme.id === id) || null;
-                if (!theme) {
-                    console.error("The theme id is not exits!");
-                    return null;
-                }
-                this.id = id;
-                return this.theme;
-            },
-            // 插入主题
-            insert(theme: SeedMap): ColorToken | null {
-				const themeList = createThemeList({
-					...options,
-					themeList: [theme]
-				})
-				this.themeList = this.themeList.concat(themeList);
-                // todo ...
-                return null;
-            },
-            // 删除主题
-            delete(id: string): number {
-				// 只有一个主题, 禁止删除, 防止主题取不到引发应用崩溃
-				if(this.themeList.length < 1) return -1;
-                const themeIndex = this.themeList.findIndex((theme: ColorToken) => theme.id === id);
-                if(themeIndex === -1) return -1;
-                this.themeList.splice(themeIndex, 1);
-                return themeIndex;
-            },
-            // 更新主题
-            update(id: string, theme: SeedMap): number {
-				if (!theme) return -1;
-                const themeIndex = this.themeList.findIndex((theme: ColorToken) => theme.id === id);
-                if (themeIndex === -1) return -1;
-				this.themeList.splice(themeIndex, 1, { ...this.themeList[themeIndex], ...theme});
-                // todo ...
-                return themeIndex;
-            },
-            // 获取主题
-            get(id?: string): ColorToken | null {
-                if (!id) return this.theme;
-                return this.themeList.find((theme: ColorToken) => theme.id === id) || null;
-            }
-        }
-    })
-
-    return useStore;
-};
-
 
