@@ -8,11 +8,12 @@ const list: ColorToken[] = createThemeList({ themeList, useDark: true }) || [];
 export type ThemeStoreId = "themeStore";
 export type ThemeStoreState = {
     /** @desc 主题ID **/
-    id: string  
+    id: string
     /** @desc 模式ID light ｜ dark **/
     modeId: "light" | "dark"
     /** @desc 生成后的主题列表： createThemeList({ themeList, useDark: true }) => MapToken[], useDark: boolean 默认不生成暗黑模式， 需要手动开启 **/
     themeList: ColorToken[]
+    useDark: boolean
 }
 export type ThemeStoreGetters = {
     /** @desc 主题内容： MapToken **/
@@ -49,12 +50,19 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
         return {
             id: ThemeConfig.themeId,    // 当前主题
             modeId: ThemeConfig.modeId, // 当前模式 light | dark
-            themeList: list
+            themeList: list,
+            // @ts-ignore
+            useDark: ThemeConfig.useDark,
         };
     },
     getters: {
         theme: (state: ThemeStoreState) => {
-            return state.themeList.find((theme) => `${state.id}-${state.modeId}` === theme.id || state.id === theme.id)
+            let theme = state.themeList.find((theme) => theme.id === `${state.id}-${state.modeId}` || theme.id === state.id);
+            if (!theme) theme = state.themeList.find((theme) => theme.id === `${state.id}-${state.modeId === "light" ? "light" : "dark"}`)
+			if(!theme){
+				theme = state.themeList.find(theme => theme.id.includes(state.modeId))
+			}
+            return theme
         },
         mode: (state: ThemeStoreState) => state.modeId
     },
@@ -75,6 +83,13 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
         get(id: string): any {
             let theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId}` || theme.id === id);
             if (!theme) theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId === "light" ? "light" : "dark"}`)
+
+			if(!theme){
+				theme = this.themeList.find(theme => theme.id.includes(this.modeId))
+				if(theme) {
+                    this.change(theme.id);
+				}
+			}
             return theme;
         },
         /**
@@ -99,7 +114,7 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
                     if(!item[key as unknown as SeedKeyType]) delete item[key as unknown as SeedKeyType];
                 })
             })
-            const newList: ColorToken[] = createThemeList({ themeList: seedList, useDark: true }) || [];
+            const newList: ColorToken[] = createThemeList({ themeList: seedList, useDark: this.useDark }) || [];
             if(!newList.length) return -1;
             if(dir == "unshift") this.themeList = newList.concat(this.themeList)
             else this.themeList = this.themeList.concat(newList);
@@ -111,7 +126,6 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
          * @return: -1 | 1
          */
         del(id: string) {
-            if(id == this.modeId) return -1;
             const newList: ColorToken[] = [];
             this.themeList.forEach((theme: ColorToken) => {
                 if (theme.id != id && theme.id != `${id}-dark` && theme.id != `${id}-light`) newList.push(theme);
@@ -129,7 +143,7 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
          * @return: -1 | 1
          */
         init(seedList: SeedOption[]) {
-            const newList = createThemeList({ themeList: seedList, useDark: true }) || [];
+            const newList = createThemeList({ themeList: seedList || ThemeConfig.themeList, useDark: this.useDark }) || [];
             if(!newList.length) return -1
             this.themeList = newList;
             this.change(this.themeList[0].id);

@@ -22,8 +22,7 @@ export default defineConfig({
             keep_classnames: true,
         },
         rollupOptions: {
-            //忽略打包vue文件
-            external: ["@ant-design/colors", "@ctrl/tinycolor", "theme.ts"],
+            external: ["theme.ts"],
             input: ["./index.ts"],
             output: [
                 {

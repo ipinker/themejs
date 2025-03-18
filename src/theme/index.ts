@@ -27,12 +27,14 @@ export type ThemeStateType = {
 
 abstract class Config {
 	static modeId: "dark" | "light"
+	static useDark: boolean
 	static themeId: string
 	static themeList: SeedOption[]
 	static setConfig: (options: { themeList: SeedOption[], modeId?: "dark" | "light", themeId?: string }) => void
 }
 export class ThemeConfig extends Config {
 	static modeId: "dark" | "light" = "light"
+	static useDark: boolean = true
 	static themeId: string = ""
 	static themeList: SeedOption[] = [
 		{"colorPrimary": "#16AD90", id: "blue", label: "经典蓝"},
@@ -53,7 +55,7 @@ export class ThemeConfig extends Config {
 }
 
 export const createThemeList = (options ?: ThemeOptions): ColorToken[] => {
-	const { themeList = [], useDark } = options || {};
+	const { themeList = ThemeConfig.themeList, useDark = ThemeConfig.useDark } = options || {};
 	const mapTokenList: ColorToken[] = [];
 	if(!themeList || !themeList.length){
 	    const defaultTheme = defaultDerivative({... seedColors, id: "light"});

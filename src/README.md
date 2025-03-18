@@ -27,29 +27,34 @@
     const store = Pinia.createPinia();
     export default store;
 ```
-```javascript
-    // store/theme.ts
-    import { createThemeStore } from "pink-theme";
-    // const useThemeStore = createThemeStore(app: Vue, options: ThemeOptions);
-    
-    export const useThemeStore = createThemeStore();
-```
 ```vue
     <script>
     // pages/index.vue
-    // 有点问题，后续有空会完善，推荐自己实现
-    import {useThemeStore} from "@/store/theme";
+    import {useThemeStore} from "ipink-theme/theme";
     const useStore = useThemeStore();
     
     const layoutBgColor = computed(() => useStore.theme?.colorBgLayout);
     console.log(layoutBgColor)
     </script>
 ```
-
-## 仅使用主题列表 (Use theme list)
+## Vue2 使用内置Store.js  (Store + Vue2)
 ```javascript
-	// 默认生成 黑,白 两种
+import Theme from "ipink-theme/theme.store"
+// ...
+const store = new Vuex.Store({
+	
+	modules:{
+		Theme
+	},
+});
+```
+
+## 仅使用主题列表生成 (Use theme list)
+```javascript
 	import { createThemeList } from "ipink-theme"
+	// 1.0.6- 默认生成 黑,白 两种
+	console.log(createThemeList()) // mode = dark | light
+    // 1.0.7+ 高版本会内置8个主题色16个模式
 	console.log(createThemeList())
 ```
 ```javascript
