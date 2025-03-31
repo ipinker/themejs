@@ -1,10 +1,25 @@
 export interface FontMap {
   // Font Size
   /**
+   * @desc 特小号字体大小
+   * @descEN Small font size
+   */
+  fontSizeXXS: number;
+  /**
+   * @desc 较小号字体大小
+   * @descEN Small font size
+   */
+  fontSizeXS: number;
+  /**
    * @desc 小号字体大小
    * @descEN Small font size
    */
-  fontSizeSM: number;
+  fontSizeS: number;
+  /**
+   * @desc 小号字体大小
+   * @descEN Normal font size
+   */
+  fontSizeM: number;
   /**
    * @desc 标准字体大小
    * @descEN Standard font size
@@ -14,12 +29,17 @@ export interface FontMap {
    * @desc 大号字体大小
    * @descEN Large font size
    */
-  fontSizeLG: number;
+  fontSizeL: number;
+  /**
+   * @desc 较大号字体大小
+   * @descEN Super large font size
+   */
+  fontSizeXL: number;
   /**
    * @desc 超大号字体大小
    * @descEN Super large font size
    */
-  fontSizeXL: number;
+  fontSizeXXL: number;
 
   /**
    * @nameZH 一级标题字号
@@ -69,15 +89,30 @@ export interface FontMap {
    */
   lineHeight: number;
   /**
+   * @desc 较大型文本行高
+   * @descEN Line height of large text.
+   */
+  lineHeightXL: number;
+  /**
    * @desc 大型文本行高
    * @descEN Line height of large text.
    */
-  lineHeightLG: number;
+  lineHeightL: number;
   /**
    * @desc 小型文本行高
    * @descEN Line height of small text.
    */
-  lineHeightSM: number;
+  lineHeightM: number;
+  /**
+   * @desc 小型文本行高
+   * @descEN Line height of small text.
+   */
+  lineHeightS: number;
+  /**
+   * @desc 较小型文本行高
+   * @descEN Line height of small text.
+   */
+  lineHeightXS: number;
 
   /**
    * @nameZH 一级标题行高

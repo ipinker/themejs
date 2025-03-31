@@ -4,34 +4,50 @@ const genRadiusMap = (
     radiusBase: number,
 ): Pick<
     ColorToken,
-    'borderRadiusXS' | 'borderRadiusSM' | 'borderRadiusLG' | 'borderRadius'
+    'borderRadiusXS' | 'borderRadiusS' | 'borderRadiusM' | 'borderRadiusL' | 'borderRadiusXL' | 'borderRadius'
 > => {
-    let radiusLG = radiusBase;
-    let radiusSM = radiusBase;
+    let radiusXL = radiusBase;
+    let radiusL = radiusBase;
+    let radiusM = radiusBase;
+    let radiusS = radiusBase;
     let radiusXS = radiusBase;
 
-    // radiusLG
+    // radiusXL
     if (radiusBase < 6 && radiusBase >= 5) {
-        radiusLG = radiusBase + 1;
+        radiusXL = radiusBase + 3;
     } else if (radiusBase < 16 && radiusBase >= 6) {
-        radiusLG = radiusBase + 2;
+        radiusXL = radiusBase + 6;
     } else if (radiusBase >= 16) {
-        radiusLG = 16;
+        radiusXL = 24;
+    }
+    // radiusL
+    if (radiusBase < 6 && radiusBase >= 5) {
+        radiusL = radiusBase + 1;
+    } else if (radiusBase < 16 && radiusBase >= 6) {
+        radiusL = radiusBase + 2;
+    } else if (radiusBase >= 16) {
+        radiusL = 16;
     }
 
     // radiusSM
     if (radiusBase < 7 && radiusBase >= 5) {
-        radiusSM = 4;
+        radiusM = 4;
     } else if (radiusBase < 8 && radiusBase >= 7) {
-        radiusSM = 5;
+        radiusM = 5;
     } else if (radiusBase < 14 && radiusBase >= 8) {
-        radiusSM = 6;
+        radiusM = 6;
     } else if (radiusBase < 16 && radiusBase >= 14) {
-        radiusSM = 7;
+        radiusM = 7;
     } else if (radiusBase >= 16) {
-        radiusSM = 8;
+        radiusM = 8;
     }
 
+    // radiusS
+    if (radiusBase < 6 && radiusBase >= 2) {
+        radiusS = 2;
+    } else if (radiusBase >= 6) {
+        radiusS = 4;
+    }
     // radiusXS
     if (radiusBase < 6 && radiusBase >= 2) {
         radiusXS = 1;
@@ -41,10 +57,12 @@ const genRadiusMap = (
 
 
     return {
-        borderRadius: radiusBase > 16 ? 16 : radiusBase,
         borderRadiusXS: radiusXS,
-        borderRadiusSM: radiusSM,
-        borderRadiusLG: radiusLG
+        borderRadiusS: radiusS,
+        borderRadiusM: radiusM,
+        borderRadiusL: radiusL,
+        borderRadiusXL: radiusXL,
+        borderRadius: radiusBase > 16 ? 16 : radiusBase,
     };
 };
 

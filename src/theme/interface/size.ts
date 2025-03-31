@@ -7,24 +7,29 @@
 export interface SizeMap {
   /**
    * @nameZH XXL
-   * @default 48
+   * @default 24
+   */
+  sizeXXXL: number;
+  /**
+   * @nameZH XXL
+   * @default 21
    */
   sizeXXL: number;
   /**
    * @nameZH XL
-   * @default 32
+   * @default 20
    */
   sizeXL: number;
   /**
    * @nameZH LG
-   * @default 24
+   * @default 18
    */
-  sizeLG: number;
+  sizeL: number;
   /**
    * @nameZH MD
-   * @default 20
+   * @default 16
    */
-  sizeMD: number;
+  sizeM: number;
   /**
    * @nameZH 默认
    * @desc 默认尺寸
@@ -33,17 +38,22 @@ export interface SizeMap {
   size: number;
   /**
    * @nameZH SM
-   * @default 12
+   * @default 15
    */
-  sizeSM: number;
+  sizeS: number;
   /**
    * @nameZH XS
-   * @default 8
+   * @default 14
    */
   sizeXS: number;
   /**
    * @nameZH XXS
-   * @default 4
+   * @default 12
    */
   sizeXXS: number;
+  /**
+   * @nameZH XXS
+   * @default 11
+   */
+  sizeXXXS: number;
 }

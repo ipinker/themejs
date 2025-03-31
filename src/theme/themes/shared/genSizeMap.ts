@@ -4,13 +4,15 @@ export default function genSizeMap(token: SeedMap): SizeMap {
   const { sizeUnit, sizeStep } = token;
 
   return {
-    sizeXXL: sizeUnit * (sizeStep + 8), // 48
-    sizeXL: sizeUnit * (sizeStep + 4), // 32
-    sizeLG: sizeUnit * (sizeStep + 2), // 24
-    sizeMD: sizeUnit * (sizeStep + 1), // 20
-    size: sizeUnit * sizeStep, // 16
-    sizeSM: sizeUnit * (sizeStep - 1), // 12
-    sizeXS: sizeUnit * (sizeStep - 2), // 8
-    sizeXXS: sizeUnit * (sizeStep - 3), // 4
+    sizeXXXL: sizeUnit * (sizeStep + 9), // 24
+    sizeXXL: sizeUnit * (sizeStep + 7), // 22
+    sizeXL: sizeUnit * (sizeStep + 5), // 20
+    sizeL: sizeUnit * (sizeStep + 3), // 18
+    sizeM: sizeUnit * (sizeStep + 1), // 16
+    size: sizeUnit * sizeStep, // 15
+    sizeS: sizeUnit * (sizeStep - 1), // 14
+    sizeXS: sizeUnit * (sizeStep - 2), // 13
+    sizeXXS: sizeUnit * (sizeStep - 3), // 12
+    sizeXXXS: sizeUnit * (sizeStep - 4), // 11
   };
 }

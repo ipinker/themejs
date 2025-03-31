@@ -2,18 +2,20 @@ import type {ColorToken, SeedMap} from '../../interface';
 
 export default function genOuterMap(token?: SeedMap): Pick<
     ColorToken,
-    "borderWidth" | "borderWidthXS" | "borderWidthSM" | "borderWidthLG" | "boxShadowWidth" | "boxShadowWidthXS" | "boxShadowWidthSM" | "boxShadowWidthLG"
+    "borderWidth" | "borderWidthS" | "borderWidthM" | "borderWidthL" | "borderWidthXL" |
+    "boxShadowWidth" | "boxShadowWidthS" | "boxShadowWidthM" | "boxShadowWidthL"
 >  {
     // const {  } = token;
     // console.log(token)
     return {
         borderWidth: 1,
-        borderWidthXS: 2,
-        borderWidthSM: 4,
-        borderWidthLG: 8,
+        borderWidthS: 0.5,
+        borderWidthM: 1,
+        borderWidthL: 2,
+        borderWidthXL: 4,
         boxShadowWidth: 2,
-        boxShadowWidthXS: 4,
-        boxShadowWidthSM: 6,
-        boxShadowWidthLG: 12,
+        boxShadowWidthS: 4,
+        boxShadowWidthM: 6,
+        boxShadowWidthL: 12,
     };
 }

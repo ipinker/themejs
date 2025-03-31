@@ -7,10 +7,14 @@ const genFontColorToken = (fontSize: number): FontMap => {
   const lineHeights = fontSizePairs.map((pair) => pair.lineHeight);
 
   return {
-    fontSizeSM: fontSizes[0],
+    fontSizeXXS: fontSizes[0],
+    fontSizeXS: fontSizes[0],
+    fontSizeS: fontSizes[0],
     fontSize: fontSizes[1],
-    fontSizeLG: fontSizes[2],
+    fontSizeM: fontSizes[1],
+    fontSizeL: fontSizes[2],
     fontSizeXL: fontSizes[3],
+    fontSizeXXL: fontSizes[3],
 
     fontSizeTitle1: fontSizes[6],
     fontSizeTitle2: fontSizes[5],
@@ -19,8 +23,11 @@ const genFontColorToken = (fontSize: number): FontMap => {
     fontSizeTitle5: fontSizes[2],
 
     lineHeight: lineHeights[1],
-    lineHeightLG: lineHeights[2],
-    lineHeightSM: lineHeights[0],
+    lineHeightXL: lineHeights[2],
+    lineHeightL: lineHeights[2],
+    lineHeightM: lineHeights[1],
+    lineHeightS: lineHeights[0],
+    lineHeightXS: lineHeights[0],
 
     lineHeightTitle1: lineHeights[6],
     lineHeightTitle2: lineHeights[5],
