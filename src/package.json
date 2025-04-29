@@ -1,6 +1,6 @@
 {
 	"name": "ipink-theme",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"description": "Theme for ui, 根据自定义的颜色值导出一套常用的Map合集, 字号、圆角、边框、字色、背景色、...",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -49,6 +49,7 @@
 	},
 	"scripts": {
 		"build": "tsc --noEmit && vite build",
+		"build:test": "tsc --noEmit && vite build --mode test",
 		"preview": "vite preview"
 	},
 	"dependencies": {

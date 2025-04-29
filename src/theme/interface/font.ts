@@ -1,3 +1,6 @@
+/**
+ * 组件标准字体
+ */
 export interface FontMap {
   // Font Size
   /**
