@@ -9,10 +9,10 @@ export const Colors = [
   'yellow',
   'volcano',
   'geekblue',
+  "gossamer",
   'lime',
   'gold',
-  'gray',
-    "gossamer"
+  'gray'
 ] as const;
 
 export type PresetColorKey = typeof Colors[number];

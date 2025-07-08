@@ -11,8 +11,8 @@ import {generateColorPalettes, generateNeutralColorPalettes} from './color';
 import defaultAlgorithm from '../default';
 
 export default function derivative(token: SeedMap, mapToken?: ColorToken): ColorToken {
-    const colorPresets = Object.keys(defaultPresetColors).map(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const colorPresets = Object.keys(defaultPresetColors).concat(["colorPrimary","colorSuccess","colorWarning","colorError","colorInfo"]).map(
         // @ts-ignore
         (colorKey: keyof PresetColorType) => {
             const colors = generate(token[colorKey], { theme: 'dark' });
@@ -21,6 +21,7 @@ export default function derivative(token: SeedMap, mapToken?: ColorToken): Color
                 return pre;
             }, {}) as ColorPalettes;
         }
+    // @ts-ignore
     ).reduce((pre, cur) => {
         return { ...pre, ...cur };
     }, {} as ColorPalettes);

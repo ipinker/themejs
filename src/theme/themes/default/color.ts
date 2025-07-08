@@ -24,9 +24,6 @@ export const generateColorPalettes: GenerateColorMap = (baseColor: string) => {
         8: colors[4],
         9: colors[5],
         10: colors[6],
-        // 8: colors[7],
-        // 9: colors[8],
-        // 10: colors[9],
     };
 };
 

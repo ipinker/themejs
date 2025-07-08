@@ -16,8 +16,8 @@ import genSpacingMap from "../shared/genSpacingMap";
 
 
 export default function derivative(token: SeedMap): ColorToken {
-
-    const colorPresets = Object.keys(defaultPresetColors).map(
+    // @ts-ignore
+    const colorPresets = Object.keys(defaultPresetColors).concat(["colorPrimary","colorSuccess","colorWarning","colorError","colorInfo"]).map(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         (colorKey: keyof PresetColorType) => {
@@ -28,6 +28,7 @@ export default function derivative(token: SeedMap): ColorToken {
             }, {}) as ColorPalettes;
         }
     ).reduce(
+        // @ts-ignore
         (pre, cur) => ({...pre, ...cur}),
         {} as ColorPalettes
     );
